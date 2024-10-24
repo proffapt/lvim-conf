@@ -3,6 +3,12 @@
 -- and require manual reload of configuration
 vim.g.mapleader = " "
 
+-- disable pre-defined keymaps
+lvim.keys.normal_mode['<C-Up>'] = false
+lvim.keys.normal_mode['<C-Down>'] = false
+lvim.keys.normal_mode['<C-Left>'] = false
+lvim.keys.normal_mode['<C-Right>'] = false
+
 -- variables
 local keymap = vim.keymap.set
 local opts = {
