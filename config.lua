@@ -4,11 +4,6 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- Compact notifications
-vim.notify = require("noice").setup({
-  render = "compact",
-})
-
 reload('plugins')
 reload('options')
 reload('keymaps')
