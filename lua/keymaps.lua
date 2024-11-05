@@ -15,6 +15,9 @@ local opts = {
     noremap = true,      -- non-recursive
     silent = true,       -- do not show message
 }
+local curr_file = vim.fn.expand('%:t')
+local curr_dir = vim.fn.expand('%:p:h')
+local cd_curr_dir = ' cd ' .. curr_dir .. '<CR>'
 
 -- non-monotonous logics
 local function entity_close()
@@ -52,10 +55,10 @@ keymap('n', '<leader>x', entity_close, opts)
 keymap('n', '_', ':split<CR>', opts)
 keymap('n', '|', ':vsplit<CR>', opts)
 -- Terminal Wndows: Splitting & Buffer
-keymap('n', 'T_', ':split | terminal cd lua<CR> i', opts)
-keymap('n', 'T|', ':vsplit | terminal<CR> i', opts)
-keymap('n', '<leader>bt', ':enew | terminal<CR> i', opts)
-keymap('n', '<leader>ft', ':ToggleTerm<CR>', opts)
+keymap('n', 'T_', ':split | terminal<CR>i' .. cd_curr_dir, opts)
+keymap('n', 'T|', ':vsplit | terminal<CR>i' .. cd_curr_dir, opts)
+keymap('n', 'TB', ':enew | terminal<CR>i' .. cd_curr_dir, opts)
+keymap('n', 'TF', ':ToggleTerm<CR>' .. cd_curr_dir, opts)
 -- Resize with arrows (delta: 1 lines)
 keymap('n', '<C-S-Up>', ':resize +1<CR>', opts)
 keymap('n', '<C-S-Down>', ':resize -1<CR>', opts)
@@ -81,6 +84,14 @@ keymap('t', '<C-S-Right>', '<C-\\><C-n>:vertical resize -1<CR>', opts)
 keymap('t', 'jk', '<Esc>', opts)
 -- Esc: Terminal -> Normal
 keymap('t', '<Esc>', '<C-\\><C-n>', opts)
+
+-----------------
+-- CODE RUNNER --
+-----------------
+
+local run_cmd = ' run ' .. curr_file .. '<CR>'
+keymap('n', 'rr', ':split | terminal<CR>i' .. cd_curr_dir .. run_cmd, opts)
+keymap('t', 'rr', run_cmd, opts)
 
 --------------------
 -- CUSTOM PLUGINS --
