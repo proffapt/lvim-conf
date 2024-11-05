@@ -18,7 +18,6 @@ local opts = {
 local curr_file = vim.fn.expand('%:t')
 local curr_dir = vim.fn.expand('%:p:h')
 local cd_curr_dir = ' cd ' .. curr_dir .. '<CR>'
-local open_term_buf =  ' | terminal<CR>i' .. cd_curr_dir
 
 -- non-monotonous logics
 local function entity_close()
@@ -56,9 +55,9 @@ keymap('n', '<leader>x', entity_close, opts)
 keymap('n', '_', ':split<CR>', opts)
 keymap('n', '|', ':vsplit<CR>', opts)
 -- Terminal Wndows: Splitting & Buffer
-keymap('n', 'T_', ':split' .. open_term_buf, opts)
-keymap('n', 'T|', ':vsplit' .. open_term_buf, opts)
-keymap('n', 'TB', ':enew' .. open_term_buf, opts)
+keymap('n', 'T_', ':split | terminal<CR>i' .. cd_curr_dir, opts)
+keymap('n', 'T|', ':vsplit | terminal<CR>i' .. cd_curr_dir, opts)
+keymap('n', 'TB', ':enew | terminal<CR>i' .. cd_curr_dir, opts)
 keymap('n', 'TF', ':ToggleTerm<CR>' .. cd_curr_dir, opts)
 -- Resize with arrows (delta: 1 lines)
 keymap('n', '<C-S-Up>', ':resize +1<CR>', opts)
@@ -95,10 +94,10 @@ local function run_cmd()
   local command = ':w<CR> :split | terminal<CR>i' .. cd_curr_dir ..  run_command
   vim.cmd(command)
 end
-keymap('n', 'rr', run_cmd, opts)
+local file_buffer = vim.fn.expand('#:p')
 
-local prev_file_buffer = vim.fn.expand('#:p')
-keymap('t', 'rr', ' run ' .. prev_file_buffer, opts)
+keymap('n', 'rr', run_cmd, opts)
+keymap('t', 'rr', ' run ' .. file_buffer, opts)
 
 --------------------
 -- CUSTOM PLUGINS --
