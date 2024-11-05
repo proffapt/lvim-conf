@@ -90,15 +90,10 @@ keymap('t', '<Esc>', '<C-\\><C-n>', opts)
 -- CODE RUNNER --
 -----------------
 
-local function run_cmd()
-  local run_command = ' run ' .. curr_file .. '<CR>'
-  local command = ':w<CR> :split | terminal<CR>i' .. cd_curr_dir ..  run_command
-  vim.cmd(command)
-end
-keymap('n', 'rr', run_cmd, opts)
+keymap('n', 'rr', ':w<CR>:split' .. open_term_buf .. ' run ' .. curr_file .. '<CR>', opts)
 
 local prev_file_buffer = vim.fn.expand('#:p')
-keymap('t', 'rr', ' run ' .. prev_file_buffer, opts)
+keymap('t', 'rr', ' run ' .. prev_file_buffer .. '<CR>', opts)
 
 --------------------
 -- CUSTOM PLUGINS --
