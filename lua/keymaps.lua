@@ -91,9 +91,8 @@ keymap('t', '<Esc>', '<C-\\><C-n>', opts)
 -----------------
 
 keymap('n', 'rr', ':w<CR>:split' .. open_term_buf .. ' run ' .. curr_file .. '<CR>', opts)
-
 local prev_file_buffer = vim.fn.expand('#:p')
-keymap('t', 'rr', ' run ' .. prev_file_buffer .. '<CR>', opts)
+keymap('t', 'rr', ' run ' .. prev_file_buffer .. '', opts)
 
 --------------------
 -- CUSTOM PLUGINS --
