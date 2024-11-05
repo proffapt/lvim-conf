@@ -52,7 +52,7 @@ keymap('n', '<leader>x', entity_close, opts)
 keymap('n', '_', ':split<CR>', opts)
 keymap('n', '|', ':vsplit<CR>', opts)
 -- Terminal Wndows: Splitting & Buffer
-keymap('n', 'T_', ':split | terminal<CR> i', opts)
+keymap('n', 'T_', ':split | terminal cd lua<CR> i', opts)
 keymap('n', 'T|', ':vsplit | terminal<CR> i', opts)
 keymap('n', '<leader>bt', ':enew | terminal<CR> i', opts)
 keymap('n', '<leader>ft', ':ToggleTerm<CR>', opts)
