@@ -4,10 +4,12 @@ lvim.plugins = {
     event = "VeryLazy",
     opts = {
       -- don't delete, otherwise it goes boom
+      -- This somehow works when put here
+      -- According, it should have been configured in config
+      -- But that doesn't work
+      -- And it works here
+      reload('plugins.noice')
     },
-    config = function()
-      require("plugins.noice")
-    end,
     dependencies = {
       "MunifTanjim/nui.nvim",
     }
