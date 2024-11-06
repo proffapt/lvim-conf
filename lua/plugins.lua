@@ -5,6 +5,9 @@ lvim.plugins = {
     opts = {
       -- don't delete, otherwise it goes boom
     },
+    config = function()
+      require("plugins.noice")
+    end,
     dependencies = {
       "MunifTanjim/nui.nvim",
     }
@@ -20,7 +23,7 @@ lvim.plugins = {
     opts = {},
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function ()
+    config = function()
       require("oil").setup({
         default_file_explorer = false,
         delete_to_trash = true,
@@ -38,7 +41,7 @@ lvim.plugins = {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function ()
+    config = function()
       require("plugins.harpoon")
     end
   },
@@ -57,8 +60,5 @@ lvim.plugins = {
       require('latex').setup({})
     end,
   },
- 'tpope/vim-surround',
+  'tpope/vim-surround',
 }
-
-
-

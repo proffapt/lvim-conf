@@ -21,17 +21,17 @@ local cd_curr_dir = ' cd ' .. CURR_DIR .. '<CR>'
 -- variables
 local keymap = vim.keymap.set
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+  noremap = true, -- non-recursive
+  silent = true,  -- do not show message
 }
-local open_term_buf =  ' | terminal<CR>i' .. cd_curr_dir
+local open_term_buf = ' | terminal<CR>i' .. cd_curr_dir
 
 -- non-monotonous logics
 local function entity_close()
-    local ok, _ = pcall(vim.cmd.close)
-    if not ok then
-        vim.cmd('BufferKill')
-    end
+  local ok, _ = pcall(vim.cmd.close)
+  if not ok then
+    vim.cmd('BufferKill')
+  end
 end
 
 -----------------
@@ -45,8 +45,8 @@ keymap('n', '<leader>rc', ':w<CR> :luafile ~/.config/lvim/config.lua<CR>', opts)
 -- Buffer Cretion
 keymap('n', '<leader>bc', ':enew<CR>', opts)
 -- Buffer Navigation
-keymap('n', '<Tab>', ':bnext<CR>' ,opts)
-keymap('n', '<S-Tab>', ':bprevious<CR>' ,opts)
+keymap('n', '<Tab>', ':bnext<CR>', opts)
+keymap('n', '<S-Tab>', ':bprevious<CR>', opts)
 -- <leader>c closes the buffer. Defined in which-key.lua
 
 -- Entity Management (Close, Save, Save and Close --
