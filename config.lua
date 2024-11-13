@@ -8,4 +8,4 @@ reload('plugins')
 reload('options')
 reload('keymaps')
 
-lvim.format_on_save = true
+-- lvim.format_on_save = true
