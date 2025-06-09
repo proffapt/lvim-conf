@@ -10,6 +10,7 @@
 
 2. Add my layer of configuration
     ```sh
+    rm -rf ~/.config/lvim
     git clone https://github.com/proffapt/lvim-conf ~/.config/lvim
     ```
 
